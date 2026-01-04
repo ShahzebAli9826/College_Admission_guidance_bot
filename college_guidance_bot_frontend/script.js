@@ -4,40 +4,20 @@ async function sendMessage() {
     const sendBtn = document.getElementById("sendBtn");
 
     if (input.value.trim() === "") return;
-
     sendBtn.disabled = true;
-
-
-    const userMsg = document.createElement("div");
-    userMsg.className = "user-msg";
-    userMsg.innerHTML = `
-        <div class="avatar">👤</div>
-        <div class="msg-content">
-            <strong>You</strong>
-            <p>${escapeHtml(input.value)}</p>
-        </div>
-    `;
-    chatBox.appendChild(userMsg);
 
     const userQuestion = input.value;
     input.value = "";
-    chatBox.scrollTop = chatBox.scrollHeight;
 
     const typingIndicator = document.createElement("div");
-    typingIndicator.className = "bot-msg typing-indicator";
     typingIndicator.id = "typing";
-    typingIndicator.innerHTML = `
-        <div class="avatar">🤖</div>
-        <div class="msg-content">
-            <p>Typing...</p>
-        </div>
-    `;
+    typingIndicator.innerText = "Typing...";
     chatBox.appendChild(typingIndicator);
-    chatBox.scrollTop = chatBox.scrollHeight;
 
     try {
-        const API_URL = "https://college-admission-backend-vs2h.onrender.com/chat";
-        fetch('${API_URL}/chat', {
+        const API_URL = "https://college-admission-backend-vs2h.onrender.com";
+
+        const res = await fetch(`${API_URL}/chat`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -52,40 +32,23 @@ async function sendMessage() {
         }
 
         const data = await res.json();
-
-        const typingEl = document.getElementById("typing");
-        if (typingEl) typingEl.remove();
+        document.getElementById("typing").remove();
 
         const botMsg = document.createElement("div");
-        botMsg.className = "bot-msg";
-        botMsg.innerHTML = `
-            <div class="avatar">🤖</div>
-            <div class="msg-content">
-                <strong>College Guidance AI</strong>
-                <p>${escapeHtml(data.reply)}</p>
-            </div>
-        `;
+        botMsg.innerText = data.reply;
         chatBox.appendChild(botMsg);
 
     } catch (error) {
-        const typingEl = document.getElementById("typing");
-        if (typingEl) typingEl.remove();
-
-        const errorMsg = document.createElement("div");
-        errorMsg.className = "bot-msg";
-        errorMsg.innerHTML = `
-            <div class="avatar">⚠️</div>
-            <div class="msg-content">
-                <strong>Error</strong>
-                <p>Unable to connect to server. Please try again.</p>
-            </div>
-        `;
-        chatBox.appendChild(errorMsg);
+        if (document.getElementById("typing")) {
+            document.getElementById("typing").remove();
+        }
+        chatBox.innerHTML += "<p>Unable to connect to server.</p>";
+        console.error(error);
     }
 
-    chatBox.scrollTop = chatBox.scrollHeight;
     sendBtn.disabled = false;
 }
+
 
 function handleKeyPress(event) {
     if (event.key === "Enter") {
