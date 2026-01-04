@@ -35,10 +35,10 @@ I have built it using FastAPI, HTML , CSS ,JavaScript, and LLMs via OpenRouter, 
 
 <img width="261" height="408" alt="image" src="https://github.com/user-attachments/assets/3101474d-7086-4c0f-aa85-d7b417a3da54" />
 
-Installation & Setup:
+Installation & Setup:<br>
   Clone the Repository:
-    git clone <repository-url>
-    cd college_admission_bot
+    <git clone <repository-url>
+    cd college_admission_bot>
 
   Create & Activate Virtual Environment:
     python -m venv venv
