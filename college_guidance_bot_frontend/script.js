@@ -36,7 +36,8 @@ async function sendMessage() {
     chatBox.scrollTop = chatBox.scrollHeight;
 
     try {
-        const res = await fetch("http://127.0.0.1:8000/chat", {
+        const res = await fetch("https://college-admission-backend.onrender.com/chat", {
+
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
