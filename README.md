@@ -35,23 +35,27 @@ I have built it using FastAPI, HTML , CSS ,JavaScript, and LLMs via OpenRouter, 
 
 <img width="261" height="408" alt="image" src="https://github.com/user-attachments/assets/3101474d-7086-4c0f-aa85-d7b417a3da54" />
 
-Installation & Setup:<br>
-  Clone the Repository:
+<pre><b>Installation & Setup:</b>
+  Clone the Repository:</pre>
     
     git clone <repository-url>
     cd college_admission_bot
     
 
   Create & Activate Virtual Environment:
+  
     python -m venv venv
 
   Windows:
+  
     venv\Scripts\activate
 
   Mac / Linux:
+  
     source venv/bin/activate
 
   Install Backend Dependencies:
+  
     pip install fastapi uvicorn openai pydantic
 
   Set Up API Key (Important 🔐):
@@ -59,12 +63,14 @@ Installation & Setup:<br>
       https://openrouter.ai/
   
   In backend/main.py:
-  client = OpenAI(
-    api_key="YOUR_OPENROUTER_API_KEY",
-    base_url="https://openrouter.ai/api/v1"
-  )
+  
+    client = OpenAI(
+      api_key="YOUR_OPENROUTER_API_KEY",
+      base_url="https://openrouter.ai/api/v1"
+    )
   
   Run Backend Server:
+  
     cd backend
     uvicorn main:app --reload
 
