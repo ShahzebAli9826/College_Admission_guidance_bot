@@ -2,8 +2,9 @@
 This is an AI-powered chatbot that helps students explore different career paths, college options, entrance exams, and future scope after 12th grade with different streams(Science,Commerce and Humanities) across India.
 I have built it using FastAPI, HTML , CSS ,JavaScript, and LLMs via OpenRouter, this project also provides real-time, conversational guidance through a modern chat interface.
 
-Features:
-1) Interactive AI chatbot for college and career guidance
+<b>Features:</b>
+
+<pre>1) Interactive AI chatbot for college and career guidance
 
 2) Covers streams after 12th (PCM, PCB, Commerce, Arts)
 
@@ -13,9 +14,9 @@ Features:
 
 5) Backend built using FastAPI
 
-6) Clean, responsive chat UI using HTML, CSS, JavaScript
+6) Clean, responsive chat UI using HTML, CSS, JavaScript</pre>
 
-<pre>Tech Stack:
+<b>Tech Stack:</b>
   Backend:
     Python 3.11
     FastAPI
