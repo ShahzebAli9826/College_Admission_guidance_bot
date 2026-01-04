@@ -17,20 +17,21 @@ I have built it using FastAPI, HTML , CSS ,JavaScript, and LLMs via OpenRouter, 
 6) Clean, responsive chat UI using HTML, CSS, JavaScript</pre>
 
 <b>Tech Stack:</b>
-  Backend:
+  <pre><b>Backend:</b>b>
     Python 3.11
     FastAPI
     Uvicorn
     OpenAI SDK (via OpenRouter)
     Pydantic
     Frontend
-  Frontend:
+  <b>Frontend:</b>
     HTML5
     CSS3
     JavaScript
-  LLM:
+  <b>LLM:</b>
     OpenRouter
     Model used: mistralai/mistral-7b-instruct</pre>
+    <hr>
 Project Structure:
 <img width="261" height="408" alt="image" src="https://github.com/user-attachments/assets/3101474d-7086-4c0f-aa85-d7b417a3da54" />
 
