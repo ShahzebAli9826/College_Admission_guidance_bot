@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>College Guidance Chatbot | Your Path to Success</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="logo">
+            <span class="logo-icon">🎓</span>
+            <h1>College Admission Guidance Chatbot</h1>
+        </div>
+        <p class="tagline">Your intelligent companion for academic decisions</p>
+    </div>
+
+    <div class="chat-container">
+        <div class="chat-box" id="chatBox">
+            <div class="bot-msg">
+                <div class="avatar">🤖</div>
+                <div class="msg-content">
+                    <strong>College Guidance AI</strong>
+                    <p>Hello! I'm here to help you navigate your academic journey. Ask me about:</p>
+                    <ul>
+                        <li>College recommendations</li>
+                        <li>Career streams after 12th</li>
+                        <li>Entrance exams and eligibility</li>
+                        <li>Career prospects and scope</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-area">
+            <input 
+                type="text" 
+                id="userInput" 
+                placeholder="Type your question here..."
+                onkeypress="handleKeyPress(event)"
+            />
+            <button onclick="sendMessage()" id="sendBtn">
+                <span>Send</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>💡 Tip: Be specific with your questions for better guidance</p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

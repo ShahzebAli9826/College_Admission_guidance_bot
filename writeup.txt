@@ -1,0 +1,65 @@
+College Admission Guidance Chatbot:
+
+Introduction:
+Choosing the right career path after class 12 is one of the most critical and confusing decisions for students.
+Many students lack proper guidance regarding available streams, suitable colleges, entrance examinations, and 
+future career opportunities. Traditional counselling methods are limited, time-consuming, and not easily 
+accessible to everyone.
+
+To solve this problem, we propose an AI-Powered College Admission Guidance Chatbot that provides instant, 
+accurate, and personalized guidance to students regarding academic streams, college options, entrance exams, 
+and future career scope using Artificial Intelligence.
+
+Problem Statement:
+Students after class 12 face challenges such as:
+1) Lack of awareness about different streams (Engineering, Medical, Commerce, Arts, etc.)
+2)Confusion regarding entrance exams and eligibility
+3)Limited access to professional counsellors
+4)Difficulty in understanding future career scope
+
+Hence, there is a need for a smart, accessible, and interactive guidance system.
+
+Objective of the Project:
+The main objectives of this project are:
+1)To guide students about streams after 12th
+2)To suggest college options and entrance exams
+3)To explain career scope and future opportunities
+4)To provide instant responses using LLM
+5)To create a user-friendly web-based chatbot
+
+Scope of the Project:
+This chatbot can be used by:
+
+1)Class 10th–12th students
+2)Parents seeking guidance
+3)Educational institutes for counselling support
+
+Future scope includes:
+1)Integration with real college databases
+2)Personalized recommendations using student marks
+3)Multilingual support
+4)Image input
+5)voice incput
+
+Technologies Used:
+Backend:
+1)Python
+2)FastAPI – REST API framework
+3)OpenRouter API – AI language model integration
+4)python-dotenv – Secure environment variable management
+
+Frontend:
+1)HTML
+2)CSS
+3)JavaScript
+
+Tools:
+Uvicorn – ASGI server
+
+VS Code – Development environment
+
+Git & GitHub – Version control
+
+System Architecture:
+
+Frontend (User Interface)->FastAPI Backend->LLM->Response to User
