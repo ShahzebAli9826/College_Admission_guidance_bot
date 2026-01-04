@@ -7,7 +7,6 @@ async function sendMessage() {
 
     sendBtn.disabled = true;
 
-    // Show user message
     const userMsg = document.createElement("div");
     userMsg.className = "user-msg";
     userMsg.innerHTML = `
@@ -23,7 +22,6 @@ async function sendMessage() {
     input.value = "";
     chatBox.scrollTop = chatBox.scrollHeight;
 
-    // Typing indicator
     const typingIndicator = document.createElement("div");
     typingIndicator.className = "bot-msg typing-indicator";
     typingIndicator.id = "typing";
@@ -37,10 +35,8 @@ async function sendMessage() {
     chatBox.scrollTop = chatBox.scrollHeight;
 
     try {
-        // ✅ CORRECT BACKEND URL
         const API_URL = "https://college-admission-backend-vs2h.onrender.com";
 
-        // ✅ CORRECT fetch with await and correct URL
         const res = await fetch(`${API_URL}/chat`, {
             method: "POST",
             headers: {
@@ -57,11 +53,9 @@ async function sendMessage() {
 
         const data = await res.json();
 
-        // Remove typing indicator
         const typingEl = document.getElementById("typing");
         if (typingEl) typingEl.remove();
 
-        // Show bot reply
         const botMsg = document.createElement("div");
         botMsg.className = "bot-msg";
         botMsg.innerHTML = `
