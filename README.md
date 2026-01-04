@@ -1,4 +1,4 @@
-<img width="261" height="408" alt="image" src="https://github.com/user-attachments/assets/6d8bfb1e-fd09-40e5-9900-89dc81342a65" /># College_Admission_guidance_bot
+# College_Admission_guidance_bot
 This is an AI-powered chatbot that helps students explore different career paths, college options, entrance exams, and future scope after 12th grade with different streams(Science,Commerce and Humanities) across India.
 I have built it using FastAPI, HTML , CSS ,JavaScript, and LLMs via OpenRouter, this project also provides real-time, conversational guidance through a modern chat interface.
 
