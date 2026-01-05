@@ -50,7 +50,7 @@ async function sendMessage() {
     chatBox.scrollTop = chatBox.scrollHeight;
 
     try {
-        const API_URL = "http://127.0.0.1:8000";
+        const API_URL = "https://college-admission-backend-vs2h.onrender.com";
         messages.push({ role: "user", content: userQuestion });
         const res = await fetch(`${API_URL}/chat`, {
             method: "POST",
