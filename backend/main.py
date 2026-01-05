@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from openai import OpenAI
+from collections import defaultdict
 from dotenv import load_dotenv
 import os
 
@@ -9,6 +10,8 @@ import os
 app = FastAPI()
 
 load_dotenv()
+
+conversation_store = defaultdict(list)
 
 app.add_middleware(
     CORSMiddleware,
@@ -25,10 +28,19 @@ client = OpenAI(
 )
 
 class ChatRequest(BaseModel):
+    session_id: str
     message: str
+    
 
 @app.post("/chat")
 async def chat(req: ChatRequest):
+    print("SESSION ID RECEIVED:", req.session_id)
+    print("MESSAGE:", req.message)
+
+    history = conversation_store.setdefault(req.session_id, [])
+
+    history.append({"role": "user", "content": req.message})
+
     response = client.chat.completions.create(
         model="mistralai/mistral-7b-instruct",
         messages=[
@@ -36,14 +48,15 @@ async def chat(req: ChatRequest):
                 "role": "system",
                 "content": (
                     "You are a College Guidance Chatbot. "
-                    "Guide students about streams after 12th, "
-                    "college choices, entrance exams, and future career scope."
+                    "You MUST remember and use information shared earlier "
+                    "like name, degree, background."
                 )
             },
-            {"role": "user", "content": req.message}
+            *history
         ]
     )
 
-    return {
-        "reply": response.choices[0].message.content
-    }
+    assistant_reply = response.choices[0].message.content
+    history.append({"role": "assistant", "content": assistant_reply})
+
+    return {"reply": assistant_reply}

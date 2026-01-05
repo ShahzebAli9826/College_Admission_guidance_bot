@@ -1,3 +1,10 @@
+let sessionId = localStorage.getItem("session_id");
+
+if (!sessionId) {
+  sessionId = crypto.randomUUID();
+  localStorage.setItem("session_id", sessionId);
+}
+
 async function sendMessage() {
     const input = document.getElementById("userInput");
     const chatBox = document.getElementById("chatBox");
@@ -36,13 +43,13 @@ async function sendMessage() {
 
     try {
         const API_URL = "https://college-admission-backend-vs2h.onrender.com";
-
         const res = await fetch(`${API_URL}/chat`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
+                session_id: sessionId,
                 message: userQuestion
             })
         });
