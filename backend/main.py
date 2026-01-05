@@ -28,35 +28,16 @@ client = OpenAI(
 )
 
 class ChatRequest(BaseModel):
-    session_id: str
-    message: str
+    messages: list
     
 
 @app.post("/chat")
 async def chat(req: ChatRequest):
-    print("SESSION ID RECEIVED:", req.session_id)
-    print("MESSAGE:", req.message)
-
-    history = conversation_store.setdefault(req.session_id, [])
-
-    history.append({"role": "user", "content": req.message})
-
     response = client.chat.completions.create(
         model="mistralai/mistral-7b-instruct",
-        messages=[
-            {
-                "role": "system",
-                "content": (
-                    "You are a College Guidance Chatbot. "
-                    "You MUST remember and use information shared earlier "
-                    "like name, degree, background."
-                )
-            },
-            *history
-        ]
+        messages=req.messages
     )
 
-    assistant_reply = response.choices[0].message.content
-    history.append({"role": "assistant", "content": assistant_reply})
-
-    return {"reply": assistant_reply}
+    return {
+        "reply": response.choices[0].message.content
+    }

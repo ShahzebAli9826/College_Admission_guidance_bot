@@ -5,6 +5,14 @@ if (!sessionId) {
   localStorage.setItem("session_id", sessionId);
 }
 
+let messages = [
+    {
+      role: "system",
+      content:
+        "You are a College Guidance Chatbot. Remember user details like name, interests, and guide accordingly."
+    }
+];
+
 async function sendMessage() {
     const input = document.getElementById("userInput");
     const chatBox = document.getElementById("chatBox");
@@ -42,15 +50,16 @@ async function sendMessage() {
     chatBox.scrollTop = chatBox.scrollHeight;
 
     try {
-        const API_URL = "https://college-admission-backend-vs2h.onrender.com";
+        const API_URL = "http://127.0.0.1:8000";
+        messages.push({ role: "user", content: userQuestion });
         const res = await fetch(`${API_URL}/chat`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
+
             body: JSON.stringify({
-                session_id: sessionId,
-                message: userQuestion
+              messages: messages
             })
         });
 
@@ -59,6 +68,8 @@ async function sendMessage() {
         }
 
         const data = await res.json();
+
+        messages.push({ role: "assistant", content: data.reply });
 
         const typingEl = document.getElementById("typing");
         if (typingEl) typingEl.remove();
