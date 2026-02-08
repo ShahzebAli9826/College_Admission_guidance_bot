@@ -74,16 +74,29 @@ async function sendMessage() {
         const typingEl = document.getElementById("typing");
         if (typingEl) typingEl.remove();
 
-        const botMsg = document.createElement("div");
-        botMsg.className = "bot-msg";
-        botMsg.innerHTML = `
-            <div class="avatar">🤖</div>
-            <div class="msg-content">
-                <strong>College Guidance AI</strong>
-                <p>${escapeHtml(data.reply)}</p>
-            </div>
-        `;
-        chatBox.appendChild(botMsg);
+        // const botMsg = document.createElement("div");
+        // botMsg.className = "bot-msg";
+        // botMsg.innerHTML = `
+        //     <div class="avatar">🤖</div>
+        //     <div class="msg-content">
+        //         <strong>College Guidance AI</strong>
+        //         <p>${escapeHtml(data.reply)}</p>
+        //     </div>
+        //`;
+        //chatBox.appendChild(botMsg);
+         const botMsg = document.createElement("div");
+botMsg.className = "bot-msg";
+botMsg.innerHTML = `
+    <div class="avatar">🤖</div>
+    <div class="msg-content">
+        <strong>College Guidance AI</strong>
+        <div class="msg-text">
+            ${marked.parse(data.reply)}
+        </div>
+    </div>
+`;
+chatBox.appendChild(botMsg);
+
 
     } catch (error) {
         console.error(error);
